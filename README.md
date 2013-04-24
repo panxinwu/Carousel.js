@@ -6,7 +6,7 @@ Carousel.js
 //TODO 使用文档
 
 ##1.最简单的用法
-
+页面中引用carousel.js和carousel.css，指定一个div，并为其指定一个data-carousel属性，值留空或任意值。这个div里面放置多个class="item"的div，各个div放置轮播内容。如：
 <pre><code>
 &lt;!doctype html&gt;
 &lt;html&gt;
