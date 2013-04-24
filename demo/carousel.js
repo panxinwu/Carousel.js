@@ -9,7 +9,7 @@
         this.init();
     }
     //默认值配置
-    var SPEED = 1,//滚动速度
+    var SPEED = 0.6,//滚动速度
         INTERVAL = 5,//自动滚动间隔时间
         autoDIRECTION = "right",//left,自动滚动方向
         indicatorPosition = 'bottom',//top,指示器（小圆点）的位置，默认在底部
@@ -59,19 +59,23 @@
         },
         initeComponents: function () {
             var me = this, inner, wrapper, width, items, pointers;
-            me.$outer = me.$outer || me.$element;
+
+            me.$outer = me.$outer || me.$element.addClass('carousel-outer');
 
             if(!me.showSurrounding) {
                 me.$outer.css('overflow', 'hidden');
             }
 
-            inner = me.$inner = me.$outer.find('.carousel-inner');
-            wrapper = me.$wrapper = inner.find('.carousel-inner-wrapper');
-            items = wrapper.find('.item');
+            inner = $('<div class="carousel-inner"></div>');
+            wrapper = $('<div class="carousel-inner-wrapper"></div>');
 
-            if(!inner.length) {
-                me.buildComponents();
-            }
+            me.$inner = inner;
+            me.$wrapper = wrapper;
+
+            items = me.$outer.find('.item');
+            items.appendTo(wrapper);
+            wrapper.appendTo(inner);
+            inner.appendTo(me.$outer);
 
             items.each(function (i, v) {
                 v.setAttribute('index', i + 1);
@@ -87,7 +91,8 @@
             me.aminateLeft = me.left - width;
 
             //指示器（小圆点）
-            me.$indicator = me.$outer.find('.carousel-indicator');
+            me.$indicator = me.$outer.find('div.carousel-indicator');
+            !me.$indicator.length && (me.$indicator = $('<div class="carousel-indicator"></div>').appendTo(me.$outer));
             indicators = '';
             for(var i = 0, len = me.amount = items.length; i < len; i++) {
                 if(i === 1) indicators += '<a ' + 'index="' + (i + 1) + '" class="active"></a>';
@@ -96,7 +101,9 @@
             me.$indicator.html(indicators);
 
             //左右箭头
-            me.$pointer = me.$outer.find('.carousel-pointer').html('<a class="turn-left">&lt;</a><a class="turn-right">&gt;</a>');
+            me.$pointer = me.$outer.find('div.carousel-pointer');
+            !me.$pointer.length && (me.$pointer = $('<div class="carousel-pointer"></div>').appendTo(me.$outer));
+            me.$pointer.html('<a class="turn-left">&lt;</a><a class="turn-right">&gt;</a>');
         },
         jumpLeft: function (speed, callback) {
             if(typeof speed === 'function') {
@@ -246,7 +253,8 @@
             animate = span < 0 ? me.jumpLeft : me.jumpRight;
 
             span = Math.abs(span);
-            speed = me.speed / span;
+            //TODO 待优化
+            speed = me.speed / span - 0.02;
 
             //动作在队列中，启动第一个动作，后面的会相应成为回调
             for(; i < span; i++) {
