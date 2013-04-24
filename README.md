@@ -1,12 +1,12 @@
 Carousel.js
 ===========
 
-轮播UI插件
+#循环轮播插件
 
 //TODO 使用文档
 
-##1.最简单的用法
-页面中引用carousel.js和carousel.css，指定一个div，并为其指定一个data-carousel属性，值留空或任意值。这个div里面放置多个class="item"的div，各个div放置轮播内容。如：
+##1.准备开始使用
+页面中引用carousel.js和carousel.css，指定一个div作为容器（下文简称容器），并按自己的需求设置高宽，在这个div里面放置多个class="item"的div，各个div放置轮播内容。如：
 <pre><code>
 &lt;!doctype html&gt;
 &lt;html&gt;
@@ -28,7 +28,7 @@ Carousel.js
         &lt;link href="carousel.css" rel="stylesheet" type="text/css" /&gt;
     &lt;/head&gt;
     &lt;body&gt;
-        &lt;div class="container" data-carousel&gt;
+        &lt;div class="container"&gt;
                     &lt;div class="item"&gt;111&lt;/div&gt;
                     &lt;div class="item"&gt;22&lt;/div&gt;
                     &lt;div class="item"&gt;3 3 3&lt;/div&gt;
@@ -41,3 +41,8 @@ Carousel.js
 &lt;/html&gt;
 
 </code></pre>
+
+##2.最简单的用法
+为第一步中的“容器”指定一个data-carousel属性，值留空或任意值，便可以自动生成轮播效果。
+
+##3.自定义配置方法
