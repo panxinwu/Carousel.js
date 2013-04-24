@@ -55,16 +55,23 @@ Carousel.js
 </code></pre>
 
 ##3.自定义配置方法
-觉得这样的方法太弱了？可以不添加data-carouse，自行在页面中使用这样的代码来自定义配置
+觉得上面的方法太弱了？那你可以不添加data-carouse，自行在页面中使用这样的代码来自定义配置
 <pre><code>
-$(function () {
-    $('#jscontrol').carousel({
-        showSurrounding: true //是否显示周围的区域，不设置则默认为false，个别需要显示旁边元素显示美化效果的需求时用到，如百度相册首页就有这样的效果
-        ,reverse:true //自动动画方向，不设置则默认为向右（false），设置为true则相反
-        ,interval: 1 //自动播放的间隔时间（秒），不设置则默认是5（秒）
-        ,speed: 0.2 //滚动一次需要的时间(秒)，不设置则默认是0.6（秒）
-        ,indicatorPosition: 'top' //指示器（小圆点）的位置（top，bottom），不设置则默认是bottom
-        ,indicatorAlign: 'right' //指示器水平位置（left，center，right），不设置则默认是center
+    &lt;div class="container" id="jscontrol"&gt;
+        &lt;div class="item"&gt;111&lt;/div&gt;
+        &lt;div class="item"&gt;22&lt;/div&gt;
+        &lt;div class="item"&gt;3 3 3&lt;/div&gt;
+        &lt;div class="item"&gt; 4444&lt;/div&gt;
+        &lt;div class="item"&gt; 5 5 5 5 5&lt;/div&gt;
+    &lt;/div&gt;
+    $(function () {
+        $('#jscontrol').carousel({
+            showSurrounding: true //是否显示周围的区域，不设置则默认为false，个别需要显示旁边元素显示美化效果的需求时用到，如百度相册首页就有这样的效果
+            ,reverse:true //自动动画方向，不设置则默认为向右（false），设置为true则相反
+            ,interval: 1 //自动播放的间隔时间（秒），不设置则默认是5（秒）
+            ,speed: 0.2 //滚动一次需要的时间(秒)，不设置则默认是0.6（秒）
+            ,indicatorPosition: 'top' //指示器（小圆点）的位置（top，bottom），不设置则默认是bottom
+            ,indicatorAlign: 'right' //指示器水平位置（left，center，right），不设置则默认是center
+        });
     });
-});
 </code></pre>
