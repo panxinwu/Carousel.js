@@ -104,7 +104,7 @@
             //左右箭头
             me.$pointer = me.$outer.find('div.carousel-pointer');
             !me.$pointer.length && (me.$pointer = $('<div class="carousel-pointer"></div>').appendTo(me.$outer));
-            me.$pointer.html('<a class="turn-left">&lt;</a><a class="turn-right">&gt;</a>');
+            me.$pointer.html('<a class="turn-left">&lsaquo;</a><a class="turn-right">&rsaquo;</a>');
         },
         jumpLeft: function (speed, callback) {
             if(typeof speed === 'function') {
@@ -348,5 +348,9 @@
             $this.data('carousel', data = new Carousel($.extend({$element: $this}, option)));
         });
     };
+
+    $(function () {
+        var a = $('[data-carousel]').carousel();
+    });
 
 }(window.jQuery);
