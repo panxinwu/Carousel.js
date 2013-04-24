@@ -22,8 +22,8 @@
         id: null,
         speed: SPEED,
         interval: INTERVAL,
+        showSurrounding: false,//是否显示旁边的元素,默认不显示
         reverse: false,
-        direction: autoDIRECTION,
         indicatorPosition: indicatorPosition,//指示器位置配置
         indicatorAlign: indicatorAlign,//指示器对齐方式配置
         animate: false,//标记当前是否在执行动画
@@ -43,7 +43,6 @@
         $toRemoveFirst: null,
         amount: null,
         width: null,
-        showSurrounding: false,//是否显示旁边的元素,默认不显示
         left: null,
         aminateLeft: null,
         intervalHandler: null,
@@ -99,6 +98,8 @@
                 else indicators += '<a ' + 'index="' + (i + 1) + '"></a>';
             }
             me.$indicator.html(indicators);
+            me.$indicator.css({'text-align': me.indicatorAlign});
+            me.indicatorPosition == 'top' ? me.$indicator.css({'top': 0}) : me.$indicator.css({'bottom': 0});
 
             //左右箭头
             me.$pointer = me.$outer.find('div.carousel-pointer');
