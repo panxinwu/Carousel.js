@@ -3,7 +3,6 @@ Carousel.js
 
 #循环轮播插件
 
-//TODO 使用文档
 
 ##1.准备开始使用
 页面中引用carousel.js和carousel.css，指定一个div作为容器（下文简称容器），并按自己的需求设置高宽，在这个div里面放置多个class="item"的div，各个div放置轮播内容。如：
